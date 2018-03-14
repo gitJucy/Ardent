@@ -47,30 +47,28 @@ export default {
     title: 'React Static with Netlify CMS',
   }),
   getRoutes: async () => {
-    const posts = await getPosts()
     return [
       {
         path: '/',
         component: 'src/containers/Home',
       },
       {
-        path: '/about',
-        component: 'src/containers/About',
+        path: '/rentals',
+        component: 'src/containers/Rental',
       },
       {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.data.slug}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
+        path: '/sales',
+        component: 'src/containers/Sales',
       },
+      {
+        path: '/service',
+        component: 'src/containers/Service',
+      },
+      {
+        path: '/parts',
+        component: 'src/containers/Parts',
+      },
+
       {
         is404: true,
         component: 'src/containers/404',
